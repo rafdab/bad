@@ -47,12 +47,13 @@ CREATE TABLE Uczestnik(
 	adres_u		VARCHAR(20),
 	telefon		VARCHAR(10),
 	mail		VARCHAR(20),
-	portfel		MONEY,
-	CONSTRAINT ck_ucz_tel CHECK (telefon like '[0-9]%')
+	portfel		MONEY DEFAULT 0,
+	CONSTRAINT ck_ucz_tel CHECK (telefon like '[0-9]%'),
+	CONSTRAINT ck_ucz_pes CHECK (PESEL like '[0-9]%')
 );
 
 CREATE TABLE Pracownik(
-	id			INT NOT NULL PRIMARY KEY,
+	id			INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	imie		VARCHAR(20),
 	nazwisko	VARCHAR(20),
 	adres_m		VARCHAR(10),
@@ -64,39 +65,39 @@ CREATE TABLE Pracownik(
 );
 
 CREATE TABLE Umiejetnosci(
-	id		INT NOT NULL PRIMARY KEY,
+	id		INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	nazwa	VARCHAR(20)
 );
 
 CREATE TABLE Kurs(
-	id				INT NOT NULL PRIMARY KEY,
+	id				INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	nazwa			VARCHAR(20),
 	czas_trwania	INT,
 	cena			MONEY
 );
 
 CREATE TABLE Certyfikat(
-	id			INT NOT NULL PRIMARY KEY,
+	id			INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	data_wyst	DATE,
 	kurs		INT REFERENCES Kurs(id),
 	uczestnik	VARCHAR(11) REFERENCES Uczestnik(PESEL)
 );
 
 CREATE TABLE Miejsce(
-	id		INT NOT NULL PRIMARY KEY,
+	id		INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	miasto	VARCHAR(10),
 	ulica	VARCHAR(20),
 	cena	MONEY
 );
 
 CREATE TABLE Grupa(
-	id			INT NOT NULL PRIMARY KEY,
+	id			INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	data_rozp	DATE,
 	kurs		INT REFERENCES Kurs(id)
 );
 
 CREATE TABLE Grafik(
-	id		INT NOT NULL PRIMARY KEY,
+	id		INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	dzien	DATE,
 	godzina	TIME,
 	miejsce	INT REFERENCES Miejsce(id),
