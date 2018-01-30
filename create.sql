@@ -23,9 +23,6 @@ IF OBJECT_ID('Grafik', 'U') IS NOT NULL
 IF OBJECT_ID('Grupa', 'U') IS NOT NULL 
 	DROP TABLE Grupa;
 	
-IF OBJECT_ID('Umiejetnosci', 'U') IS NOT NULL 
-	DROP TABLE Umiejetnosci;
-	
 IF OBJECT_ID('Miejsce', 'U') IS NOT NULL 
 	DROP TABLE Miejsce;
 	
@@ -34,11 +31,19 @@ IF OBJECT_ID('Pracownik', 'U') IS NOT NULL
 	
 IF OBJECT_ID('Kurs', 'U') IS NOT NULL 
 	DROP TABLE Kurs;
+	
+IF OBJECT_ID('Umiejetnosci', 'U') IS NOT NULL 
+	DROP TABLE Umiejetnosci;
 
 IF OBJECT_ID('Uczestnik', 'U') IS NOT NULL 
 	DROP TABLE Uczestnik;
 
 -- CREATE
+CREATE TABLE Umiejetnosci(
+	id		INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	nazwa	VARCHAR(20)
+);
+
 CREATE TABLE Uczestnik(
 	PESEL		VARCHAR(11) PRIMARY KEY,
 	imie		VARCHAR(20),
@@ -64,16 +69,12 @@ CREATE TABLE Pracownik(
 	CONSTRAINT ck_prac_tel CHECK (telefon like '[0-9]%')
 );
 
-CREATE TABLE Umiejetnosci(
-	id		INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	nazwa	VARCHAR(20)
-);
-
 CREATE TABLE Kurs(
 	id				INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	nazwa			VARCHAR(20),
 	czas_trwania	INT,
-	cena			MONEY
+	cena			MONEY,
+	wymagane		INT REFERENCES Umiejetnosci(id)
 );
 
 CREATE TABLE Certyfikat(
@@ -93,7 +94,8 @@ CREATE TABLE Miejsce(
 CREATE TABLE Grupa(
 	id			INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	data_rozp	DATE,
-	kurs		INT REFERENCES Kurs(id) ON DELETE SET NULL
+	kurs		INT REFERENCES Kurs(id) ON DELETE SET NULL,
+	porwadzacy	INT REFERENCES Pracownik(id) ON DELETE SET NULL
 );
 
 CREATE TABLE Grafik(
@@ -110,12 +112,6 @@ CREATE TABLE Wymagania_kurs_kurs(
 	wymagany	INT REFERENCES Kurs(id)
 );
 
--- wymagane umiejêtnoœci do prowadzenia kursu (wymagania co do pracownika)
-CREATE TABLE Wymagania_kurs_pracownik(
-	id_kursu	INT REFERENCES Kurs(id) ON DELETE CASCADE,
-	umiejetnosc	INT REFERENCES Umiejetnosci(id)
-);
-
 -- lista umiejêtnoœæi konkretnych pracowników
 CREATE TABLE Umiejetnosci_pracownika(
 	id_prac		INT REFERENCES Pracownik(id) ON DELETE CASCADE,
@@ -126,10 +122,4 @@ CREATE TABLE Umiejetnosci_pracownika(
 CREATE TABLE Gr_ucz(
 	grupa		INT REFERENCES Grupa(id) ON DELETE CASCADE,
 	uczestnik	VARCHAR(11) REFERENCES Uczestnik(PESEL)
-);
-
--- prowadz¹cy grupê
-CREATE TABLE Gr_prac(
-	grupa		INT REFERENCES Grupa(id) ON DELETE CASCADE,
-	pracownik	INT REFERENCES Pracownik(id)
 );

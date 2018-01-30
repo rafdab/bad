@@ -32,31 +32,31 @@ INSERT INTO Umiejetnosci VALUES ('DE');
 INSERT INTO Umiejetnosci VALUES ('T');
 
 --Kurs
-INSERT INTO Kurs VALUES ('Kat. AM', 2, 200);
-INSERT INTO Kurs VALUES ('Kat. A1', 2, 300);
-INSERT INTO Kurs VALUES ('Kat. A2', 4, 700);
-INSERT INTO Kurs VALUES ('Kat. A', 8, 1200);
-INSERT INTO Kurs VALUES ('Kat. B1', 3, 500);
-INSERT INTO Kurs VALUES ('Kat. B', 4, 900);
-INSERT INTO Kurs VALUES ('Kat. C1', 8, 1800);
-INSERT INTO Kurs VALUES ('Kat. C', 16, 3500);
-INSERT INTO Kurs VALUES ('Kat. D1', 14, 3000);
-INSERT INTO Kurs VALUES ('Kat. D', 20, 6000);
-INSERT INTO Kurs VALUES ('Kat. BE', 1, 200);
-INSERT INTO Kurs VALUES ('Kat. C1E', 2, 650);
-INSERT INTO Kurs VALUES ('Kat. CE', 3, 1000);
-INSERT INTO Kurs VALUES ('Kat. D1E', 4, 1000);
-INSERT INTO Kurs VALUES ('Kat. DE', 4, 1500);
-INSERT INTO Kurs VALUES ('Kat. T', 4, 650);
+INSERT INTO Kurs VALUES ('Kat. AM', 2, 200, 3);
+INSERT INTO Kurs VALUES ('Kat. A1', 2, 300, 4);
+INSERT INTO Kurs VALUES ('Kat. A2', 4, 700, 5);
+INSERT INTO Kurs VALUES ('Kat. A', 8, 1200, 6);
+INSERT INTO Kurs VALUES ('Kat. B1', 3, 500, 7);
+INSERT INTO Kurs VALUES ('Kat. B', 4, 900, 8);
+INSERT INTO Kurs VALUES ('Kat. C1', 8, 1800, 9);
+INSERT INTO Kurs VALUES ('Kat. C', 16, 3500, 10);
+INSERT INTO Kurs VALUES ('Kat. D1', 14, 3000, 11);
+INSERT INTO Kurs VALUES ('Kat. D', 20, 6000, 12);
+INSERT INTO Kurs VALUES ('Kat. BE', 1, 200, 13);
+INSERT INTO Kurs VALUES ('Kat. C1E', 2, 650, 14);
+INSERT INTO Kurs VALUES ('Kat. CE', 3, 1000, 15);
+INSERT INTO Kurs VALUES ('Kat. D1E', 4, 1000, 16);
+INSERT INTO Kurs VALUES ('Kat. DE', 4, 1500, 17);
+INSERT INTO Kurs VALUES ('Kat. T', 4, 650, 18);
 
 -- miejsce
 INSERT INTO Miejsce VALUES ('Poznañ', 'Kwiatowa 18', 200);
 INSERT INTO Miejsce VALUES ('Poznañ', 'M³yñska 35', 350);
 
 -- grupa
-INSERT INTO Grupa VALUES ('2018-02-15', 6);
-INSERT INTO Grupa VALUES ('2018-02-01', 4);
-INSERT INTO Grupa VALUES ('2018-02-06', 8);
+INSERT INTO Grupa VALUES ('2018-02-15', 6, 2);
+INSERT INTO Grupa VALUES ('2018-02-01', 4, 4);
+INSERT INTO Grupa VALUES ('2018-02-06', 8, 1);
 
 -- grafik (automatyczne tworzenie)
 
@@ -64,7 +64,7 @@ INSERT INTO Grupa VALUES ('2018-02-06', 8);
 INSERT INTO Umiejetnosci_pracownika VALUES (1, 1);
 INSERT INTO Umiejetnosci_pracownika VALUES (1, 2);
 INSERT INTO Umiejetnosci_pracownika VALUES (1, 3);
-INSERT INTO Umiejetnosci_pracownika VALUES (1, 4);
+INSERT INTO Umiejetnosci_pracownika VALUES (1, 10);
 INSERT INTO Umiejetnosci_pracownika VALUES (1, 5);
 INSERT INTO Umiejetnosci_pracownika VALUES (2, 7);
 INSERT INTO Umiejetnosci_pracownika VALUES (2, 8);
@@ -91,22 +91,3 @@ INSERT INTO Wymagania_kurs_kurs VALUES (12, 7);
 INSERT INTO Wymagania_kurs_kurs VALUES (13, 8);
 INSERT INTO Wymagania_kurs_kurs VALUES (14, 9);
 INSERT INTO Wymagania_kurs_kurs VALUES (15, 10);
-
---wymagania kurs - pracownik
-
-INSERT INTO Wymagania_kurs_pracownik VALUES (1,3);
-INSERT INTO Wymagania_kurs_pracownik VALUES (2,4);
-INSERT INTO Wymagania_kurs_pracownik VALUES (3,5);
-INSERT INTO Wymagania_kurs_pracownik VALUES (4,5);
-INSERT INTO Wymagania_kurs_pracownik VALUES (5,6);
-INSERT INTO Wymagania_kurs_pracownik VALUES (6,7);
-INSERT INTO Wymagania_kurs_pracownik VALUES (7,8);
-INSERT INTO Wymagania_kurs_pracownik VALUES (8,9);
-INSERT INTO Wymagania_kurs_pracownik VALUES (9,10);
-INSERT INTO Wymagania_kurs_pracownik VALUES (10,11);
-INSERT INTO Wymagania_kurs_pracownik VALUES (11,12);
-INSERT INTO Wymagania_kurs_pracownik VALUES (12,13);
-INSERT INTO Wymagania_kurs_pracownik VALUES (13,14);
-INSERT INTO Wymagania_kurs_pracownik VALUES (14,15);
-INSERT INTO Wymagania_kurs_pracownik VALUES (15,16);
-INSERT INTO Wymagania_kurs_pracownik VALUES (16,17);

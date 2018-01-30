@@ -24,3 +24,9 @@ as
 			FROM	Grupa g JOIN Kurs k on k.id = g.kurs
 					JOIN Grafik graf on g.id = graf.grupa
 					JOIN Miejsce m on m.id = graf.miejsce
+
+CREATE FUNCTION certyfikaty (@kurs INT) returns INT
+as
+begin
+	return SELECT count(id) from Certyfikat where kurs = @kurs
+end
