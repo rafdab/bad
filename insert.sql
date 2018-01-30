@@ -57,6 +57,7 @@ INSERT INTO Miejsce VALUES ('Poznañ', 'M³yñska 35', 350);
 INSERT INTO Grupa VALUES ('2018-02-15', 6, 2);
 INSERT INTO Grupa VALUES ('2018-02-01', 4, 4);
 INSERT INTO Grupa VALUES ('2018-02-06', 8, 1);
+INSERT INTO Grupa VALUES ('2018-02-06', 3, NULL);
 
 -- grafik (automatyczne tworzenie)
 

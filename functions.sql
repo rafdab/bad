@@ -28,5 +28,7 @@ as
 CREATE FUNCTION certyfikaty (@kurs INT) returns INT
 as
 begin
-	return SELECT count(id) from Certyfikat where kurs = @kurs
+	declare @out int
+	SELECT @out = count(id) from Certyfikat where kurs = @kurs group by id
+	return @out
 end
