@@ -80,7 +80,7 @@ CREATE TABLE Certyfikat(
 	id			INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	data_wyst	DATE,
 	kurs		INT REFERENCES Kurs(id),
-	uczestnik	VARCHAR(11) REFERENCES Uczestnik(PESEL)
+	uczestnik	VARCHAR(11) REFERENCES Uczestnik(PESEL) ON DELETE SET NULL
 );
 
 CREATE TABLE Miejsce(
@@ -93,43 +93,43 @@ CREATE TABLE Miejsce(
 CREATE TABLE Grupa(
 	id			INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	data_rozp	DATE,
-	kurs		INT REFERENCES Kurs(id)
+	kurs		INT REFERENCES Kurs(id) ON DELETE SET NULL
 );
 
 CREATE TABLE Grafik(
 	id		INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	dzien	DATE,
 	godzina	TIME,
-	miejsce	INT REFERENCES Miejsce(id),
-	grupa	INT REFERENCES Grupa(id),
+	miejsce	INT REFERENCES Miejsce(id) ON DELETE SET NULL,
+	grupa	INT REFERENCES Grupa(id) ON DELETE SET NULL,
 );
 
 -- wymagania do uczesniczenia w kursie (wymagania co do uczestnika)
 CREATE TABLE Wymagania_kurs_kurs(
-	id_kursu	INT REFERENCES Kurs(id),
+	id_kursu	INT REFERENCES Kurs(id) ON DELETE CASCADE,
 	wymagany	INT REFERENCES Kurs(id)
 );
 
 -- wymagane umiejêtnoœci do prowadzenia kursu (wymagania co do pracownika)
 CREATE TABLE Wymagania_kurs_pracownik(
-	id_kursu	INT REFERENCES Kurs(id),
+	id_kursu	INT REFERENCES Kurs(id) ON DELETE CASCADE,
 	umiejetnosc	INT REFERENCES Umiejetnosci(id)
 );
 
 -- lista umiejêtnoœæi konkretnych pracowników
 CREATE TABLE Umiejetnosci_pracownika(
-	id_prac		INT REFERENCES Pracownik(id),
+	id_prac		INT REFERENCES Pracownik(id) ON DELETE CASCADE,
 	umiejetnosc	INT REFERENCES Umiejetnosci(id)
 );
 
 -- uczestnicy w grupie
 CREATE TABLE Gr_ucz(
-	grupa		INT REFERENCES Grupa(id),
+	grupa		INT REFERENCES Grupa(id) ON DELETE CASCADE,
 	uczestnik	VARCHAR(11) REFERENCES Uczestnik(PESEL)
 );
 
 -- prowadz¹cy grupê
 CREATE TABLE Gr_prac(
-	grupa		INT REFERENCES Grupa(id),
+	grupa		INT REFERENCES Grupa(id) ON DELETE CASCADE,
 	pracownik	INT REFERENCES Pracownik(id)
 );

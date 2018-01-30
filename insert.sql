@@ -6,7 +6,7 @@ INSERT INTO Uczestnik VALUES ('65946568542', 'Rafaela', 'Stanis³awowicz', 'Pozna
 INSERT INTO Uczestnik VALUES ('32656421542', 'Bogdan', 'Rogowiecki', 'Poznañ', 'D³uga 993', '754875465', 'bogdan@poczta.pl', 0);
 
 -- pracownik
-INSERT INTO Pracownik VALUES ('Antoni', 'Wychlej', 'Poznañ', 'Pod³u¿na 4', '658565452', 'antoni@firma.pl', 2000);
+INSERT INTO Pracownik VALUES ('Antoni', 'Wa³ecki', 'Poznañ', 'Pod³u¿na 4', '658565452', 'antoni@firma.pl', 2000);
 INSERT INTO Pracownik VALUES ('Piotr', 'Rolla', 'Poznañ', 'Krzywa 11', '568569985', 'piotr@firma.pl', 3500);
 INSERT INTO Pracownik VALUES ('Joanna', 'Wsad', 'Poznañ', 'Niebieska 3/5', '788556985', 'joanna@firma.pl', 3250);
 INSERT INTO Pracownik VALUES ('Karol', 'Kowalewski', 'Poznañ', 'Niebieska 11/4', '564885699', 'karol@firma.pl', 2900);
