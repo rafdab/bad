@@ -35,3 +35,16 @@ select dbo.certyfikaty(2)
 
 EXEC DodajProwadzacego 4, 3
 EXEC DodajUczestnika 1, '65986534215'
+
+exec DodajDoGrafiku 1, 1, '11:00'
+exec DodajDoGrafiku 2, 1, '11:00'
+select * from Grafik
+delete from Grafik
+
+select * from grafikPrac
+select * from grafikUcz
+
+exec UsunPracownika 3
+
+exec KursRaport 6
+exec KursRaport 20
