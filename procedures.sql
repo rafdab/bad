@@ -73,29 +73,14 @@ AS
            IF EXISTS (SELECT * FROM Uczestnik
                               WHERE PESEL = @PESEL)
            BEGIN
-		   DECLARE @kurs INT
-		   SET @kurs = (SELECT Kurs.id FROM (Grupa JOIN Kurs ON Grupa.kurs = Kurs.id) WHERE Grupa.id = @id)
-                   IF (SELECT portfel FROM Uczestnik WHERE PESEL = @PESEL) >= (SELECT cena FROM Kurs WHERE id = @kurs)
+                   IF (SELECT portfel FROM Uczestnik WHERE PESEL = @PESEL) >= (SELECT cena FROM Kurs WHERE id = @id)
 				   BEGIN
-						   IF EXISTS (SELECT * FROM Certyfikat WHERE uczestnik = @PESEL AND id = (SELECT wymagany FROM Kurs JOIN Wymagania_kurs_kurs AS T ON Kurs.id = T.id_kursu WHERE Kurs.id = @kurs))
-								BEGIN
-									IF EXISTS (SELECT id FROM Grupa WHERE id = @id)
-									BEGIN
-										INSERT INTO Gr_ucz VALUES (@id,@PESEL);
-										UPDATE Uczestnik SET portfel = portfel - (SELECT cena FROM Kurs WHERE id = @id) WHERE PESEL = @PESEL
-									END;
-									ELSE IF EXISTS (SELECT id FROM Grupa WHERE id = @id)
-									BEGIN
-										RAISERROR('Dana grupa juz istnieje - inny kurs', 11, 1);
-									END;
-									ELSE
-										RAISERROR('Dana grupa nie istnieje', 11, 1);
-								END;
-								ELSE
-								RAISERROR('Uzytkownik nie ma wymaganych kursow', 11, 1)
+						INSERT INTO Gr_ucz VALUES (@id,@PESEL);
+						UPDATE Uczestnik SET portfel = portfel - (SELECT cena FROM Kurs WHERE id = @id) WHERE PESEL = @PESEL
 				   END;
 				   ELSE
-						RAISERROR('Uzytkownik nie ma pieniazkow', 11, 1);	    
+						RAISERROR('Uzytkownik nie ma pieniazkow', 11, 1);
+				    
            END;
            ELSE
                   RAISERROR('Nie ma takieu ¿ytkownika', 11, 1);

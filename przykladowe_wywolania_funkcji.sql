@@ -6,11 +6,8 @@ delete from Uczestnik where PESEL = '65856554548'
 select * from Uczestnik
 select * from uczestnik_backup
 
-select * from Umiejetnosci
-
 EXEC DoladujPortfel 2000, '65986534215'
 select * from Uczestnik
-
 EXEC DoladujPortfel 500, 'asd'
 
 EXEC DodajUczestnika 1, '65986534215'
@@ -23,7 +20,7 @@ EXEC DodajUczestnika 1, 'asd'
 EXEC Certyfikuj 1
 select * from Certyfikat
 
-EXEC DodajProwadzacego 1, 3
+EXEC DodajProwadzacego 2, 2
 select * from Grupa
 EXEC DodajProwadzacego 1, 1
 EXEC DodajProwadzacego 7, 1
@@ -37,14 +34,14 @@ EXEC DodajProwadzacego 4, 3
 EXEC DodajUczestnika 1, '65986534215'
 
 exec DodajDoGrafiku 1, 1, '11:00'
-exec DodajDoGrafiku 2, 1, '11:00'
 select * from Grafik
 delete from Grafik
 
 select * from grafikPrac
 select * from grafikUcz
 
-exec UsunPracownika 3
+exec UsunPracownika 1
+exec UsunPracownika 20
 
 exec KursRaport 6
 exec KursRaport 20
